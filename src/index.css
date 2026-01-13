@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Custom dropdown option styling */
+select.custom-select {
+  color: white;
+}
+
+select.custom-select option {
+  background-color: rgba(0, 0, 0, 0.98) !important;
+  color: white !important;
+  padding: 14px 20px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+select.custom-select option:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+}
+
+select.custom-select option:checked,
+select.custom-select option:focus {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15)) !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+select.custom-select option:disabled {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* For better dropdown appearance on different browsers */
+select.custom-select::-ms-expand {
+  display: none;
+}
+
+/* Firefox dropdown styling */
+@-moz-document url-prefix() {
+  select.custom-select option {
+    background-color: rgba(0, 0, 0, 0.98) !important;
+    color: white !important;
+  }
+}
