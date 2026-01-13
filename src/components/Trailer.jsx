@@ -53,14 +53,14 @@ const TrailerSwiper = () => {
   if (!videos.length) return null;
 
   return (
-    <section className="p-20 relative">
+    <section className="p-4 sm:p-8 md:p-12 lg:p-20 relative">
       {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
-        <h2 className="text-3xl font-black text-white">
+      <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-white">
           Trailers & Videos
         </h2>
         {movieName && (
-          <p className="text-xl text-white/80 mt-2 font-black">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 font-black">
             {movieName}
           </p>
         )}
@@ -68,8 +68,8 @@ const TrailerSwiper = () => {
 
       {/* Left Button */}
       <button
-        className="swiper-prev absolute left-7 top-1/2 cursor-pointer -translate-y-1/2 z-20
-               bg-white/95 backdrop-blur-sm text-black w-10 h-10 rounded-full flex items-center
+        className="swiper-prev absolute left-2 sm:left-4 md:left-7 top-1/2 cursor-pointer -translate-y-1/2 z-20
+               bg-white/95 backdrop-blur-sm text-black w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center
                justify-center shadow-2xl hover:scale-110 hover:bg-white transition-all
                hover:shadow-3xl border border-white/20"
       >
@@ -78,8 +78,8 @@ const TrailerSwiper = () => {
 
       {/* Right Button */}
       <button
-        className="swiper-next absolute right-7 top-1/2 cursor-pointer -translate-y-1/2 z-20
-               bg-white/95 backdrop-blur-sm text-black w-10 h-10 rounded-full flex items-center
+        className="swiper-next absolute right-2 sm:right-4 md:right-7 top-1/2 cursor-pointer -translate-y-1/2 z-20
+               bg-white/95 backdrop-blur-sm text-black w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center
                justify-center shadow-2xl hover:scale-110 hover:bg-white transition-all
                hover:shadow-3xl border border-white/20"
       >

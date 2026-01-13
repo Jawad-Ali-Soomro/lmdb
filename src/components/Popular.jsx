@@ -29,28 +29,29 @@ const Popular = () => {
 
 
   return (
-    <div className="h-[100vh] p-20 flex flex-col justify-center">
+    <div className="min-h-[70vh] sm:min-h-[80vh] md:h-[100vh] p-4 sm:p-8 md:p-12 lg:p-20 flex flex-col justify-center">
       {/* Header */}
-      <div className="flex gap-5 w-full items-center justify-between">
-        <div className="flex gap-5 items-center">
-          <div className="p-3 border-3 rounded-full">
-            <HiPlay />
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full items-start sm:items-center justify-between">
+        <div className="flex gap-3 sm:gap-5 items-center">
+          <div className="p-2 sm:p-3 border-3 rounded-full">
+            <HiPlay className="text-base sm:text-lg md:text-xl" />
           </div>
-          <h1 className="text-3xl font-black">Popular Movies</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white">Popular Movies</h1>
         </div>
 
-        <button className="w-[200px] bg-white text-black font-bold gap-5 flex items-center justify-center h-[50px] rounded-full">
+        <button className="w-full sm:w-auto sm:min-w-[180px] md:w-[200px] bg-white text-black font-bold gap-3 sm:gap-5 flex items-center justify-center h-[45px] sm:h-[50px] rounded-full text-sm sm:text-base px-4 sm:px-6">
           <HiPlayCircle />
-          Watch All
+          <span className="hidden sm:inline">Watch All</span>
+          <span className="sm:hidden">All</span>
         </button>
       </div>
 
       {/* Swiper */}
-    <div className="w-full mt-16 relative">
+    <div className="w-full mt-8 sm:mt-12 md:mt-16 relative">
   {/* Left Button */}
   <button
-    className="swiper-prev absolute -left-15 top-1/2 cursor-pointer -translate-y-1/2 z-20
-               bg-white text-black w-10 h-10 rounded-full flex items-center
+    className="swiper-prev absolute -left-4 sm:-left-8 md:-left-15 top-1/2 cursor-pointer -translate-y-1/2 z-20
+               bg-white text-black w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center
                justify-center shadow-lg hover:scale-110 transition"
   >
     ❮
@@ -58,8 +59,8 @@ const Popular = () => {
 
   {/* Right Button */}
   <button
-    className="swiper-next absolute -right-15 top-1/2 cursor-pointer -translate-y-1/2 z-20
-               bg-white text-black w-10 h-10 rounded-full flex items-center
+    className="swiper-next absolute -right-4 sm:-right-8 md:-right-15 top-1/2 cursor-pointer -translate-y-1/2 z-20
+               bg-white text-black w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center
                justify-center shadow-lg hover:scale-110 transition"
   >
     ❯
@@ -67,8 +68,13 @@ const Popular = () => {
 
   <Swiper
     modules={[Navigation]}
-    spaceBetween={20}
-    slidesPerView={5}
+    spaceBetween={10}
+    slidesPerView={2}
+    breakpoints={{
+      640: { slidesPerView: 3, spaceBetween: 15 },
+      768: { slidesPerView: 4, spaceBetween: 15 },
+      1024: { slidesPerView: 5, spaceBetween: 20 },
+    }}
     grabCursor
     navigation={{
       prevEl: ".swiper-prev",

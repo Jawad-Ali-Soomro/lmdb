@@ -144,12 +144,12 @@ const Explore = () => {
         key="prev"
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
+        className="px-2 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
                    disabled:opacity-50 disabled:cursor-not-allowed transition-all
-                   flex items-center justify-center gap-2"
+                   flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm"
       >
-        <HiChevronLeft />
-        Prev
+        <HiChevronLeft className="text-sm sm:text-base" />
+        <span className="hidden sm:inline">Prev</span>
       </button>
     );
 
@@ -159,14 +159,14 @@ const Explore = () => {
         <button
           key={1}
           onClick={() => handlePageChange(1)}
-          className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-all"
+          className="px-2 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-all text-xs sm:text-sm"
         >
           1
         </button>
       );
       if (startPage > 2) {
         buttons.push(
-          <span key="ellipsis1" className="text-white/50 px-2">
+          <span key="ellipsis1" className="text-white/50 px-1 sm:px-2 text-xs sm:text-sm">
             ...
           </span>
         );
@@ -179,7 +179,7 @@ const Explore = () => {
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`px-4 py-2 rounded-full font-bold transition-all ${
+          className={`px-2 sm:px-4 py-2 rounded-full font-bold transition-all text-xs sm:text-sm ${
             currentPage === i
               ? "bg-white text-black"
               : "bg-white/10 hover:bg-white/20 text-white"
@@ -194,7 +194,7 @@ const Explore = () => {
     if (endPage < totalPages) {
       if (endPage < totalPages - 1) {
         buttons.push(
-          <span key="ellipsis2" className="text-white/50 px-2">
+          <span key="ellipsis2" className="text-white/50 px-1 sm:px-2 text-xs sm:text-sm">
             ...
           </span>
         );
@@ -203,7 +203,7 @@ const Explore = () => {
         <button
           key={totalPages}
           onClick={() => handlePageChange(totalPages)}
-          className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-all"
+          className="px-2 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-all text-xs sm:text-sm"
         >
           {totalPages}
         </button>
@@ -216,12 +216,12 @@ const Explore = () => {
         key="next"
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
+        className="px-2 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
                    disabled:opacity-50 disabled:cursor-not-allowed transition-all
-                   flex items-center justify-center gap-2"
+                   flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm"
       >
-        Next
-        <HiChevronRight />
+        <span className="hidden sm:inline">Next</span>
+        <HiChevronRight className="text-sm sm:text-base" />
       </button>
     );
 
@@ -237,11 +237,11 @@ const Explore = () => {
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-20">
+    <div className="min-h-screen pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-20">
       {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
-        <div>
-          <h1 className="text-5xl font-black text-white mb-4">
+      <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-2 sm:mb-4 break-words">
             {searchQuery 
               ? `Search Results for "${searchQuery}"` 
               : type === "trending" 
@@ -260,19 +260,19 @@ const Explore = () => {
         </div>
         
         {/* Action Buttons - Right Side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           {(searchQuery || type) && (
             <button
               onClick={() => {
                 navigate("/explore");
                 setCurrentPage(1);
               }}
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
+              className="px-3 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
                        transition-all border border-white/20 flex items-center gap-2
-                       backdrop-blur-sm shadow-lg hover:scale-105"
+                       backdrop-blur-sm shadow-lg hover:scale-105 text-sm sm:text-base"
               title={searchQuery ? "Clear Search" : "View All Movies"}
             >
-              <HiArrowLeft className="text-xl" />
+              <HiArrowLeft className="text-lg sm:text-xl" />
             </button>
           )}
           
@@ -280,40 +280,42 @@ const Explore = () => {
            !searchQuery && !type && (
             <button
               onClick={clearFilters}
-              className="px-4 py-2 rounded-full bg-red-500/20 hover:bg-red-500/30 text-white font-bold
+              className="px-3 sm:px-4 py-2 rounded-full bg-red-500/20 hover:bg-red-500/30 text-white font-bold
                        transition-all border border-red-500/30 hover:border-red-500/50
-                       backdrop-blur-sm shadow-lg hover:scale-105 flex items-center gap-2"
+                       backdrop-blur-sm shadow-lg hover:scale-105 flex items-center gap-2 text-sm sm:text-base"
               title="Clear Filters"
             >
-              <HiXCircle className="text-xl" />
+              <HiXCircle className="text-lg sm:text-xl" />
             </button>
           )}
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row">
         {/* Left Sidebar - Filters */}
         <aside className={`transition-all duration-500 ${
-          showFilters && type !== "favorites" && type !== "watchlist" ? "w-80 opacity-100 mr-10" : "w-0 opacity-0 overflow-hidden"
+          showFilters && type !== "favorites" && type !== "watchlist" 
+            ? "w-full lg:w-80 opacity-100 mb-6 lg:mb-0 lg:mr-10" 
+            : "w-0 opacity-0 overflow-hidden"
         }`}>
-          <div className="sticky top-32 
-                        rounded-2xl backdrop-blur-md shadow-2xl p-6">
+          <div className="sticky top-20 sm:top-24 md:top-32 
+                        rounded-2xl backdrop-blur-md shadow-2xl p-4 sm:p-6">
             {/* Filter Header */}
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-black text-white flex items-center gap-2">
-                <IoFilter className="text-2xl" />
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                <IoFilter className="text-xl sm:text-2xl" />
                 Filters
               </h2>
               <button
                 onClick={() => setShowFilters(false)}
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white
-                         transition-all border border-white/20"
+                         transition-all border border-white/20 lg:hidden"
               >
-                <HiXMark className="text-xl" />
+                <HiXMark className="text-lg sm:text-xl" />
               </button>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 sm:gap-6">
               {/* Genre Filter */}
               <div className="flex flex-col gap-3 relative group">
                 <label className="text-white/90 text-sm font-black uppercase tracking-wider">Genre</label>
@@ -419,35 +421,36 @@ const Explore = () => {
         <div className="flex-1">
           {/* Toggle Filters Button - Show when filters are hidden */}
           {!showFilters && type !== "favorites" && type !== "watchlist" && (
-            <div className="mb-6 flex justify-end">
+            <div className="mb-4 sm:mb-6 flex justify-start sm:justify-end">
               <button
                 onClick={() => setShowFilters(true)}
-                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
+                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
                          transition-all border border-white/20 flex items-center gap-2
-                         backdrop-blur-sm shadow-lg hover:scale-105"
+                         backdrop-blur-sm shadow-lg hover:scale-105 text-sm sm:text-base"
               >
-                <IoFilter className="text-xl" />
-                Show Filters
+                <IoFilter className="text-lg sm:text-xl" />
+                <span className="hidden sm:inline">Show Filters</span>
+                <span className="sm:hidden">Filters</span>
               </button>
             </div>
           )}
 
           {/* Movies Grid */}
           {(type === "favorites" && favorites.length === 0) || (type === "watchlist" && watchlist.length === 0) ? (
-            <div className="flex flex-col items-center justify-center py-20">
-              <p className="text-white/60 text-xl font-bold mb-4">
+            <div className="flex flex-col items-center justify-center py-12 sm:py-20">
+              <p className="text-white/60 text-base sm:text-lg md:text-xl font-bold mb-4 text-center px-4">
                 {type === "favorites" ? "No favorite movies yet" : "Your watchlist is empty"}
               </p>
               <button
                 onClick={() => navigate("/explore")}
-                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
-                         transition-all border border-white/20"
+                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold
+                         transition-all border border-white/20 text-sm sm:text-base"
               >
                 Explore Movies
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12">
               {movies
                 .filter((movie) => movie.poster_path)
                 .map((movie) => (
@@ -495,7 +498,7 @@ const Explore = () => {
 
           {/* Pagination - Aligned to the end */}
           {(type !== "favorites" && type !== "watchlist") && (
-            <div className="flex items-center justify-end gap-2 flex-wrap mt-8">
+            <div className="flex items-center justify-center sm:justify-end gap-1 sm:gap-2 flex-wrap mt-6 sm:mt-8">
               {renderPaginationButtons()}
             </div>
           )}
